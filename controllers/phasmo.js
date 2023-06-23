@@ -4,7 +4,8 @@ const Ghost = require("../models/ghost")
 module.exports = {
     index,
     show,
-    new: newRoom
+    new: newRoom,
+    create
 }
 
 
@@ -42,4 +43,18 @@ function newRoom(req, res){
 		errorMsg: '',
 		title: 'New Room'
 	})
+}
+
+//CREATE NEW ROOM
+async function create(req,res){
+	try {
+		await Room.create(req.body)
+		res.redirect('/maps')
+	} catch(err){
+		console.log(err.errors)
+		res.render('maps/new', {
+			title: 'error',
+			errorMsg: err
+		})
+	}
 }
