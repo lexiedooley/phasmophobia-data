@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const ghostCtrl = require('../controllers/ghosts')
+
+//GET index 
+router.get("/", ghostCtrl.index);
 
 module.exports = router;
