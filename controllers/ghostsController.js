@@ -4,7 +4,7 @@ module.exports = {
     index
 }
 
-
+// get ghost index page
 async function index(req, res){
     const ghostsAll = await ghost.find({})
     const context = {
