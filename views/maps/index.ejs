@@ -1,7 +1,34 @@
 <%- include('../partials/header') %>
 
-<form class="col-md-8" action="/maps/new" method="POST">
-    <button type="submit" class="btn btn-primary">Add room</button>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Map Names</title>
+  </head>
+  <body>	
+	<div class="mapContainer">
+	  <% maps.forEach(m => { %>
+		<a href="/maps/<%= m.id %>" class ="mapDiv">
+			<div> <%= m.mapName %> </div>
+		</a>
+	  <% }) %> 
+	</div>
+<div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5" id="holder">
+	<form class="col-md-8" action="/maps" method="POST">
+
+		<div class="mb-2">
+			<label for="mapName" class="form-label">Map Name</label>
+			<input type="text" class="form-control" id="mapName" name="mapName" placeholder="Enter Map Name">
+		</div>
+
+		<div class="mb-2">
+			<label for="mapImg" class="form-label">Map Image</label>
+			<input type="text" class="form-control" id="mapImg" name="mapImg" placeholder="Enter Map Image Link">
+		</div>å
+
+    <button type="submit" class="btn btn-primary">Add Map</button>
 </form>
 
 <%- include('../partials/footer') %>

@@ -6,7 +6,13 @@ const mapsCtrl = require('../controllers/mapsController')
 const ghostCtrl = require('../controllers/ghostsController')
 
 // //CREATE new room
-// router.post('/', mapCtrl.create)
+router.post('/maps', mapsCtrl.create)
+
+// Delete Map
+router.delete('/:id', mapsCtrl.deleteRoom)
+
+// //GET one
+router.get('/maps/:id', mapsCtrl.show);
 
 //GET /maps
 router.get('/maps', mapsCtrl.index);
@@ -17,11 +23,9 @@ router.get('/ghosts', ghostCtrl.index);
 //GET index 
 router.get("/", indexCtrl.index);   
 
-// //GET one
-router.get('./maps/:id', mapsCtrl.show);
-
 // //GET new
-router.get('/maps/new', mapsCtrl.newRoom);
+router.get('/maps:', mapsCtrl.newRoom);
+
 
 module.exports = router;
 
