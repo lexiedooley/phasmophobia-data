@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  background-color: black;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -35,4 +36,23 @@ a {
   flex-direction: column;
   gap: 3px;
   padding-top: 30px;
+}
+
+h1 {
+  color: white;
+}
+
+.mapImg {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 60%;
+}
+
+.imgDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5p
 }

@@ -10,7 +10,33 @@
   </head>
   <body>
 	<script src="index.js"></script>
-    <h1>HELLOOOO</h1>
+
+  <div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5" id="holder">
+    <form class="col-md-8" action="/ghosts" method="POST">
+  
+      <div class="mb-2">
+        <label for="ghostName" class="form-label">Ghost Name</label>
+        <input type="text" class="form-control" id="ghostName" name="ghostName" placeholder="Enter Ghost Name">
+      </div>
+  
+      <div class="mb-2">
+        <label for="ghostEvidence" class="form-label">Ghost Evidence</label>
+        <input type="text" class="form-control" id="ghostEvidence" name="ghostEvidence" placeholder="Enter Ghost Evidence">
+      </div>
+
+      <div class="mb-2">
+        <label for="ghostStrengths" class="form-label">Ghost Strengths</label>
+        <input type="text" class="form-control" id="ghostStrengths" name="ghostStrengths" placeholder="Enter Ghost Strengths">
+      </div>
+  
+      <div class="mb-2">
+        <label for="ghostWeakness" class="form-label">Ghost Weakness</label>
+        <input type="text" class="form-control" id="ghostWeakness" name="ghostWeakness" placeholder="Enter Ghost Weakness">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Ghost</button>
+  </form>
+  
   </body>
 </html>
 <%- include('../partials/footer') %>

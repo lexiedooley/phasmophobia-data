@@ -1,43 +1,38 @@
-const Map = require('../models/ghost')
+const Map = require('../models/maps')
 
 module.exports = {
     index,
     show,
     newRoom,
-    create,
+    createMap,
     deleteRoom
 }
 
 // maps index page
 async function index(req, res){
     const mapsAll = await Map.find({})
-    console.log(mapsAll, 'maps all')
     const context = {
         maps: mapsAll,
 		title: 'Maps'
     }
-    res.render('maps/index', context)
-}
+    res.render('maps/index', context)}
 
 //SHOW
-async function show(req, res, next){
+async function show(req, res){
     try {
-
-        const oneMap = await Map.findById(res.params.id)
+        const mapFind = await Map.findById(req.params.id)
         const context ={
-        Map: oneMap,
-        title: oneMap.mapName
+        name: mapFind.mapName,
+        image: mapFind.mapImg,
+        rooms: mapFind.rooms,
+        title: 'Maps'
     }
-    res.render("/maps/:id", context)
-    console.log('hello')
-} catch(err){
-    console.log(err, 'error in function show')
-    res.render('maps', {
-        title: 'error',
-        errorMsg: err
-    });
+    res.render('maps/show', context)
+} catch(err) {
+    console.log(err, 'error')
+  }
 }
-}
+
 
 //NEW ROOM
 function newRoom(req, res){
@@ -48,7 +43,7 @@ function newRoom(req, res){
 }
 
 //CREATE NEW MAP
-async function create(req,res, next){
+async function createMap(req,res, next){
     try {
         const { mapName, mapImg } = req.body
         console.log(req.body, 'body')
@@ -58,7 +53,6 @@ async function create(req,res, next){
         })
         res.redirect('/maps')
     } catch(err){
-        console.log(err, 'error in function create')
         res.render('maps', {
             title: 'error',
             errorMsg: err
