@@ -23,6 +23,7 @@ async function show(req, res){
     try {
         const mapFind = await Map.findById(req.params.id)
         const context ={
+        map: mapFind.id,
         name: mapFind.mapName,
         image: mapFind.mapImg,
         rooms: mapFind.rooms,
@@ -30,7 +31,7 @@ async function show(req, res){
     }
     res.render('maps/show', context)
 } catch(err) {
-    console.log(err, 'error')
+    console.log(err, 'error in show function')
   }
 }
 
@@ -52,41 +53,27 @@ async function createMap(req,res, next){
         })
     }
 }
-
-//UPDATING maps > room 
-async function updateMap(req, res){
-	const mapUpdate = await Map.findById(req.params.id);
-    try {
-        const mapId = req.params.id
-        const mapBody = req.body
-
-        await Map.findByIdAndUpdate(mapId, mapBody, {runValidators: true})
-
-        res.redirect(`/maps/${mapId}`)
-    } catch(err){
-        res.render('maps', {
-            title: 'error',
-            errorMsg: err
-		})
-    }
-}
-
-// EDIT MAP FOR ROOM
+//edit 
 async function edit(req, res){
-	try {
-		const currentMap = await Map.findById(req.params.id)
-		res.render('maps/edit', {
-			map: currentMap,
-			rooms: `Edit ${currentMap.rooms}`,
-			errorMsg: ''
-		})
-     } catch(err){
-            res.render('maps', {
-                title: 'error',
-                errorMsg: err
-            })
-        }
+    try {
+      const maps = await Map.findById(req.params.id)
+      res.render('maps/edit/:id', {
+        Maps
+      })
+    } catch {
+      console.log('error in edit function')
     }
+  }
+
+//update map
+async function updateMap(req, res){
+    try {
+      await Map.findByIdAndUpdate(req.params.id, req.body)
+      res.redirect('/maps/edit/:id' + req.params.id)
+    } catch {
+      console.log('error in update function')
+    }
+  }
 
 // DELETE ROOM
 async function deleteRoom(req, res){
