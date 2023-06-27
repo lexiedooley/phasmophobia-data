@@ -11,6 +11,17 @@
    <div class="imgDiv">
     <img class='mapImg' src="<%= image %>" alt="">
    </div> 
+
+   <div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5" id="holder">
+    <form class="col-md-8" action="/maps/edit/:id" method="POST">
+  
+      <div class="mb-2">
+        <label for="rooms" class="form-label"></label>å
+        <input type="text" class="form-control" id="rooms" name="rooms" placeholder="Room Name">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Room</button>
+    </form>
+
   </body>
 </html>
 

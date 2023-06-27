@@ -3,9 +3,10 @@ const Map = require('../models/maps')
 module.exports = {
     index,
     show,
-    newRoom,
     createMap,
-    deleteRoom
+    deleteRoom,
+    updateMap,
+    edit
 }
 
 // maps index page
@@ -34,19 +35,11 @@ async function show(req, res){
 }
 
 
-//NEW ROOM
-function newRoom(req, res){
-    res.render('/maps', {
-        errorMsg: '',
-        title: 'New Room'
-    })
-}
-
 //CREATE NEW MAP
 async function createMap(req,res, next){
     try {
         const { mapName, mapImg } = req.body
-        console.log(req.body, 'body')
+ 
         await Map.create({
             mapName: mapName,
             mapImg: mapImg
@@ -59,6 +52,41 @@ async function createMap(req,res, next){
         })
     }
 }
+
+//UPDATING maps > room 
+async function updateMap(req, res){
+	const mapUpdate = await Map.findById(req.params.id);
+    try {
+        const mapId = req.params.id
+        const mapBody = req.body
+
+        await Map.findByIdAndUpdate(mapId, mapBody, {runValidators: true})
+
+        res.redirect(`/maps/${mapId}`)
+    } catch(err){
+        res.render('maps', {
+            title: 'error',
+            errorMsg: err
+		})
+    }
+}
+
+// EDIT MAP FOR ROOM
+async function edit(req, res){
+	try {
+		const currentMap = await Map.findById(req.params.id)
+		res.render('maps/edit', {
+			map: currentMap,
+			rooms: `Edit ${currentMap.rooms}`,
+			errorMsg: ''
+		})
+     } catch(err){
+            res.render('maps', {
+                title: 'error',
+                errorMsg: err
+            })
+        }
+    }
 
 // DELETE ROOM
 async function deleteRoom(req, res){
@@ -73,4 +101,3 @@ async function deleteRoom(req, res){
 		})
     }
 }
-

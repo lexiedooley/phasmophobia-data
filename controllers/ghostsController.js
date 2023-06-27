@@ -2,7 +2,8 @@ const Ghost = require('../models/ghost')
 
 module.exports = {
     index,
-    createGhost
+    createGhost,
+    show
 }
 
 // get ghost index page
@@ -34,4 +35,22 @@ async function createGhost(req,res, next){
             errorMsg: err
         })
     }
+}
+
+//SHOW
+async function show(req, res){
+    try {
+        const ghostFind = await Ghost.findById(req.params.id)
+        const context ={
+        name: ghostFind.ghostName,
+        strengths: ghostFind.ghostStrengths,
+        weakness: ghostFind.ghostWeakness,
+        evidence: ghostFind.ghostEvidence,
+        occurances: ghostFind.ghostOccurrances,
+        title: 'Ghosts'
+    }
+    res.render('ghosts/show', context)
+} catch(err) {
+    console.log(err, 'error')
+  }
 }
