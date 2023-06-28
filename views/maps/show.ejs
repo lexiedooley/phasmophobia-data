@@ -17,9 +17,16 @@
         <label for="rooms" class="form-label"></label>
         <input type="text" class="form-control" id="rooms" name="roomName" placeholder="Room Name"></input>
 
+
+
       <button type="submit" class="btn btn-primary">Add Room</button>
     </div>
   </form>
+  <div class="roomContainer">
+    <% rooms.forEach(r => { %>
+      <div> <%= r.roomName %> </div>
+    <% }) %> 
+  </div>
   </div>
 
 <%- include('../partials/footer') %>

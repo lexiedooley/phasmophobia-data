@@ -13,7 +13,7 @@ async function index(req, res){
     const mapsAll = await Map.find({})
     const context = {
         maps: mapsAll,
-		title: 'Maps'
+		    title: 'Maps'
     }
     res.render('maps/index', context)}
 
@@ -60,26 +60,34 @@ async function updateMap(req, res){
       const mapBody = req.body
     
       const mapData = await Map.findById(mapId)
-
-//////////////
       //declaring new object
-      const newArr = {
-      //give roomName prop and value of what theye typed in the form
-        roomName: mapBody,
-      //give occurances prop value of 1 
-        occurrances: 1, 
+      const newRoomInfo = {
+      // //give roomName prop and value of what theye typed in the form
+        roomName: mapBody.roomName,
+      // //give occurances prop value of 1 
+        occurrances: 1
       }
-      console.log(newArr)
+      
+      //pushing new info into array
+      const roomArr = mapData.rooms
+      roomArr.push(newRoomInfo)
+      
+
       //find document and update it
       await Map.findByIdAndUpdate( mapId, {
-        //use $sett for the value of rooms
+      //use $sett for the value of rooms
         $set: {
-          rooms: newArr,
+          rooms: roomArr,
         }
       })
+      
+      //declare context object
        const context = {
-          name: newArr.roomName,
-          occurances: newArr.occurrances
+          rooms: roomArr,
+          title: 'Maps',
+          name: mapData.mapName,
+          image: mapData.mapImg,
+          map: mapData._id,
        }
       res.render(`maps/show`, context)
     } catch {
