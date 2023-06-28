@@ -6,7 +6,6 @@ module.exports = {
     createMap,
     deleteRoom,
     updateMap,
-    edit
 }
 
 // maps index page
@@ -23,7 +22,7 @@ async function show(req, res){
     try {
         const mapFind = await Map.findById(req.params.id)
         const context ={
-        map: mapFind.id,
+        map: mapFind._id,
         name: mapFind.mapName,
         image: mapFind.mapImg,
         rooms: mapFind.rooms,
@@ -40,7 +39,7 @@ async function show(req, res){
 async function createMap(req,res, next){
     try {
         const { mapName, mapImg } = req.body
- 
+        console.log('your mother')
         await Map.create({
             mapName: mapName,
             mapImg: mapImg
@@ -53,23 +52,36 @@ async function createMap(req,res, next){
         })
     }
 }
-//edit 
-async function edit(req, res){
-    try {
-      const maps = await Map.findById(req.params.id)
-      res.render('maps/edit/:id', {
-        Maps
-      })
-    } catch {
-      console.log('error in edit function')
-    }
-  }
 
 //update map
 async function updateMap(req, res){
-    try {
-      await Map.findByIdAndUpdate(req.params.id, req.body)
-      res.redirect('/maps/edit/:id' + req.params.id)
+  try {
+      const mapId = req.params.id
+      const mapBody = req.body
+    
+      const mapData = await Map.findById(mapId)
+
+//////////////
+      //declaring new object
+      const newArr = {
+      //give roomName prop and value of what theye typed in the form
+        roomName: mapBody,
+      //give occurances prop value of 1 
+        occurrances: 1, 
+      }
+      console.log(newArr)
+      //find document and update it
+      await Map.findByIdAndUpdate( mapId, {
+        //use $sett for the value of rooms
+        $set: {
+          rooms: newArr,
+        }
+      })
+       const context = {
+          name: newArr.roomName,
+          occurances: newArr.occurrances
+       }
+      res.render(`maps/show`, context)
     } catch {
       console.log('error in update function')
     }

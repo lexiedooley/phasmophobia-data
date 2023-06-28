@@ -11,8 +11,15 @@
    <div class="imgDiv">
     <img class='mapImg' src="<%= image %>" alt="">
    </div> 
-   <a href="/maps/edit/<%=map.id%>">Update Map</a>
-  </body>
-</html>
+   <div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5" id="holder">
+    <form class="col-md-8" action="/maps/edit/<%= map %>" method="POST">
+      <div class="mb-2">
+        <label for="rooms" class="form-label"></label>
+        <input type="text" class="form-control" id="rooms" name="roomName" placeholder="Room Name"></input>
+
+      <button type="submit" class="btn btn-primary">Add Room</button>
+    </div>
+  </form>
+  </div>
 
 <%- include('../partials/footer') %>

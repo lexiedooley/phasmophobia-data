@@ -8,8 +8,23 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5">
-        <div id="ghostInfo"> <% name %> </div>
+    <a href="/ghosts" class="backButton">Back</a>
+    <img class ='ghostImg' src = "https://media.sirusgaming.com/wp-content/uploads/2022/02/Phasmophobia.jpg">
+    <div class="ghostInfo">
+      <div class="justify-content-center d-flex">
+        <div class="my-10 col-md-10">
+          <div class="p-5 text-center bg-body-secondary rounded">
+            <div class="container py-5">
+              <label><span>Name:</span> <%= name %></label>
+              <label><span>Evidence:</span> <%= evidence %></label>
+              <label><span>Strengths:</span> <%= strengths %></label>
+              <label><span>Weaknesses:</span> <%= weakness %></label>
+            </div>
+			  </div>
+		  </div>
+	  </div>
+  </div>
+  </div>
   </body>
 </html>
 

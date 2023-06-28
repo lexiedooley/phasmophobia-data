@@ -54,9 +54,31 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5p
+  padding: 5px
 }
 
-#ghostInfo {
-  color: white
+.ghostInfo {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px;
+  max-width: 60%;
+}
+
+.ghostImg {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  max-width: 70%;
+}
+
+.backButton {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 50%;
 }
