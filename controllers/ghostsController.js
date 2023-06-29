@@ -28,7 +28,8 @@ async function createGhost(req,res, next){
             ghostName: ghostName,
             ghostStrengths: ghostStrengths,
             ghostWeakness: ghostWeakness,
-            ghostEvidence: ghostEvidence
+            ghostEvidence: ghostEvidence,
+            ghostOccurrances: 0
         })
         res.redirect('/ghosts')
     } catch(err){
