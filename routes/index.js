@@ -18,6 +18,12 @@ router.post('/ghosts', ghostCtrl.createGhost)
 // Delete Map
 router.post('/maps/delete/:id', mapsCtrl.deleteMap)
 
+// adding occurance to room
+router.post('/maps/add/:id/:roomName', mapsCtrl.addOccurance)
+
+// removing occurance from room
+router.post('/maps/subtract/:id/:roomName', mapsCtrl.subtractOccurance)
+
 //GET one map
 router.get('/maps/:id', mapsCtrl.show); 
 

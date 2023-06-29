@@ -70,7 +70,6 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: left;
-  max-width: 70%;
 }
 
 .ghostText {
@@ -106,4 +105,8 @@ h1 {
 
 ul {
   list-style: none;
+}
+
+.occurrances {
+  color: white
 }

@@ -8,6 +8,7 @@
 	<title>Map Names</title>
   </head>
   <body>	
+	<a href="/" class="backButton">Back</a>
 	<div class="mapContainer">
 	  <% maps.forEach(m => { %>
 		<a href="/maps/<%= m.id %>" class ="mapDiv">
@@ -24,12 +25,12 @@
 	<form class="col-md-8" action="/maps" method="POST">
 
 		<div class="mb-2">
-			<label for="mapName" class="form-label">Map Name</label>
+			<label for="mapName" class="form-label"></label>
 			<input type="text" class="form-control" id="mapName" name="mapName" placeholder="Enter Map Name">
 		</div>
 
 		<div class="mb-2">
-			<label for="mapImg" class="form-label">Map Image</label>
+			<label for="mapImg" class="form-label"></label>
 			<input type="text" class="form-control" id="mapImg" name="mapImg" placeholder="Enter Map Image Link">
 		</div>
 

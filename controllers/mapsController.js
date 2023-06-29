@@ -6,6 +6,8 @@ module.exports = {
     createMap,
     deleteMap,
     updateMap,
+    addOccurance,
+    subtractOccurance
 }
 
 // maps index page
@@ -98,7 +100,6 @@ async function updateMap(req, res){
 // DELETE ROOM
 async function deleteMap(req, res){
     try {
-        console.log(req.params.id, 'yooo')
         await Map.findByIdAndDelete(req.params.id)
         res.redirect('/maps')
     } catch(err){
@@ -108,4 +109,72 @@ async function deleteMap(req, res){
 			errorMsg: err.message
 		})
     }
+}
+
+//add one occurance
+async function addOccurance(req, res){
+  try {
+    const mapId = req.params.id
+    const mapBody = req.body
+    const mapData = await Map.findById(mapId)
+    const roomInfo = mapData.rooms;
+    const roomName = req.params.roomName
+
+    for (let i = 0; i < roomInfo.length; i++) {
+      if (roomInfo[i].roomName === roomName) {
+        roomInfo[i].occurrances++
+      }
+    }
+   
+    await Map.findByIdAndUpdate( mapId, {
+        $set: {
+          rooms: roomInfo,
+        }
+      })
+      const context = {
+        rooms: roomInfo,
+        title: 'Maps',
+        name: mapData.mapName,
+        image: mapData.mapImg,
+        map: mapData._id,
+     }
+     console.log(roomInfo)
+    res.render(`maps/show`, context)
+  } catch {
+    console.log('error in add occ function')
+  }
+}
+
+//subtract one occurrance
+async function subtractOccurance(req, res){
+  try {
+    const mapId = req.params.id
+    const mapBody = req.body
+    const mapData = await Map.findById(mapId)
+    const roomInfo = mapData.rooms;
+    const roomName = req.params.roomName
+
+    for (let i = 0; i < roomInfo.length; i++) {
+      if (roomInfo[i].roomName === roomName) {
+        roomInfo[i].occurrances--
+      }
+    }
+   
+    await Map.findByIdAndUpdate( mapId, {
+        $set: {
+          rooms: roomInfo,
+        }
+      })
+      const context = {
+        rooms: roomInfo,
+        title: 'Maps',
+        name: mapData.mapName,
+        image: mapData.mapImg,
+        map: mapData._id,
+     }
+     console.log(roomInfo)
+    res.render(`maps/show`, context)
+  } catch {
+    console.log('error in add occ function')
+  }
 }

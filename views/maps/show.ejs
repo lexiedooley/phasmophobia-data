@@ -8,16 +8,26 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-   <div class="imgDiv">
-    <img class='mapImg' src="<%= image %>" alt="">
-   </div> 
+    <a href="/maps" class="backButton">Back</a>
+      <div class="imgDiv">
+       <img class='mapImg' src="<%= image %>" alt="">
+      </div> 
 
    <div class="roomContainer">
         <% rooms.forEach(r => { %>
           
-          <div class="roomName"> <%= r.roomName %></div>
+          <div class="roomName"> <%= r.roomName %><span class="occurrances"><%= r.occurrances %></span></div>
+          <form action="/maps/subtract/<%= map %>/<%= r.roomName %>" method="POST"> 
+            <button class= type="submit">
+              -
+            </button>
+          </form>
+          <form action="/maps/add/<%= map %>/<%= r.roomName %>" method="POST"> 
+            <button class= type="submit">
+              +
+            </button>
+          </form>
     <% }) %> 
-   </form>
   </div>
 
    <div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5" id="holder">
