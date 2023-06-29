@@ -63,7 +63,6 @@ h1 {
   flex-direction: column;
   justify-content: center;
   padding: 100px;
-  max-width: 60%;
 }
 
 .ghostImg {
@@ -74,11 +73,37 @@ h1 {
   max-width: 70%;
 }
 
+.ghostText {
+  padding: 5px;
+}
+
 .backButton {
   color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   padding: 20px;
   border-radius: 50%;
+}
+.roomContainer {
+  color:white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  max-width: 100%;
+}
+
+.roomName {
+  display: flex; 
+   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 50%;
+  text-align: left;
+}
+
+ul {
+  list-style: none;
 }

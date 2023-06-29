@@ -4,7 +4,7 @@ module.exports = {
     index,
     show,
     createMap,
-    deleteRoom,
+    deleteMap,
     updateMap,
 }
 
@@ -96,8 +96,9 @@ async function updateMap(req, res){
   }
 
 // DELETE ROOM
-async function deleteRoom(req, res){
+async function deleteMap(req, res){
     try {
+        console.log(req.params.id, 'yooo')
         await Map.findByIdAndDelete(req.params.id)
         res.redirect('/maps')
     } catch(err){

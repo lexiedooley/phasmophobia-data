@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const mapSchema = new Schema ({
     mapName: {type: String, required: true},
     mapImg: {type: String, required: true},
-    rooms: {type: Array, required: false},
+    rooms: {type: Array, required: true},
 })
 
 module.exports = mongoose.model('Map', mapSchema)
