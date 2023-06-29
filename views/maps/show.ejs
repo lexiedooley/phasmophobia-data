@@ -13,11 +13,10 @@
        <img class='mapImg' src="<%= image %>" alt="">
       </div> 
 
-   <div class="roomContainer">
+   <div class="mapContainer">
         <% rooms.forEach(r => { %>
-          
-          <div class="roomName"> <%= r.roomName %><span class="occurrances"><%= r.occurrances %></span></div>
-          <form action="/maps/subtract/<%= map %>/<%= r.roomName %>" method="POST"> 
+          <div class="addButtons">
+          <form class=action="/maps/subtract/<%= map %>/<%= r.roomName %>" method="POST"> 
             <button class= type="submit">
               -
             </button>
@@ -27,6 +26,8 @@
               +
             </button>
           </form>
+          </div>
+          <div class="roomName"> <%= r.roomName %><span class="occurrances"><%= r.occurrances %></span></div>
     <% }) %> 
   </div>
 

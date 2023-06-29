@@ -8,7 +8,7 @@ const ghostSchema = new Schema (
     ghostStrengths: {type: String, required: true},
     ghostWeakness: {type: String, required: true},
     ghostEvidence: {type: String, required: true},
-    ghostOccurrances: {type: Number, required: false}
+    ghostOccurrances: {type: Number, required: true},
 })
 
 module.exports = mongoose.model('Ghost', ghostSchema)

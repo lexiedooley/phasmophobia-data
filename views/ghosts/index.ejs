@@ -14,7 +14,18 @@
       <% ghosts.forEach(g => { %>
       <a href="/ghosts/<%= g.id %>" class ="mapDiv">
         <div> <%= g.ghostName %> </div>
-      </a>
+        <div class="addButtons">
+          <form action="/ghosts/subtract/<%= g.id %>" method="POST"> 
+            <button class= type="submit">
+              -
+            </button>
+          </form>
+          <form action="/ghosts/add/<%= g.id %>" method="POST"> 
+            <button class= type="submit">
+              +
+            </button>
+          </form>
+          </div>
       <% }) %> 
     </div>
 

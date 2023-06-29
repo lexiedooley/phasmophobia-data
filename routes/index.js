@@ -24,6 +24,12 @@ router.post('/maps/add/:id/:roomName', mapsCtrl.addOccurance)
 // removing occurance from room
 router.post('/maps/subtract/:id/:roomName', mapsCtrl.subtractOccurance)
 
+// adding occurance to ghost
+router.post('/ghosts/add/:id', ghostCtrl.addOccurance)
+
+//removing occurance from ghost
+router.post('/ghosts/subtract/:id', ghostCtrl.subtractGhostOccurance)
+
 //GET one map
 router.get('/maps/:id', mapsCtrl.show); 
 

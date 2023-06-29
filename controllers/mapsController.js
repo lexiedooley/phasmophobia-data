@@ -115,7 +115,6 @@ async function deleteMap(req, res){
 async function addOccurance(req, res){
   try {
     const mapId = req.params.id
-    const mapBody = req.body
     const mapData = await Map.findById(mapId)
     const roomInfo = mapData.rooms;
     const roomName = req.params.roomName
@@ -149,7 +148,6 @@ async function addOccurance(req, res){
 async function subtractOccurance(req, res){
   try {
     const mapId = req.params.id
-    const mapBody = req.body
     const mapData = await Map.findById(mapId)
     const roomInfo = mapData.rooms;
     const roomName = req.params.roomName
