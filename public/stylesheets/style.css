@@ -128,14 +128,6 @@ ul {
   align-items: right;
 }
 
-.indexImg {
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 40px, 20px, 40px, 20px,
-}
 
 .button {
   display: inline-block;
