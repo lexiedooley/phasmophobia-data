@@ -15,19 +15,24 @@
 
    <div class="mapContainer">
         <% rooms.forEach(r => { %>
-          <div class="roomName"> <%= r.roomName %> <span class="occurrances"><%= r.occurrances %></span> occurrances</div>
+         <div class="mapContainer"> 
           <div class="addButtons">
-            <form class=action="/maps/subtract/<%= map %>/<%= r.roomName %>" method="POST"> 
-              <button class= type="submit">
-                -
-              </button>
-            </form>
-            <form action="/maps/add/<%= map %>/<%= r.roomName %>" method="POST"> 
-              <button class= type="submit">
-                +
-              </button>
-            </form>
-            </div>
+          <form action="/maps/subtract/<%= map %>/<%= r.roomName %>" method="POST"> 
+            <button class= "button" type="submit">
+              -
+            </button>
+          </form>
+          <form action="/maps/add/<%= map %>/<%= r.roomName %>" method="POST"> 
+            <button class="button" type="submit">
+              +
+            </button>
+          </form>
+          </div>
+          <div class="roomName"> 
+            <span> <%= r.roomName %> </span>
+            <span class="occurrances"> <%= r.occurrances %> </span>
+          </div>
+         </div>
     <% }) %> 
   </div>
 

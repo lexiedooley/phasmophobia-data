@@ -10,15 +10,16 @@
   <body>	
 	<a href="/" class="backButton">Back</a>
 	<div class="mapContainer">
-	  <% maps.forEach(m => { %>
-		<a href="/maps/<%= m.id %>" class ="mapDiv">
-			<div><%= m.mapName %> </div>
-		</a>
-		<form action="/maps/delete/<%= m.id %>" method="POST"> 
-			<button class="btn btn-sm btn-danger" type="submit">
-				X
-			</button>
-		</form>
+		<% maps.forEach(m => { %>
+		<div class="mapDiv">
+			<a href="/maps/<%= m.id %>"> <%= m.mapName %> </a>
+				
+			<form action="/maps/delete/<%= m.id %>" method="POST"> 
+				<button class="button" id="deleteButton" type="submit">
+					X
+				</button>
+			</form>
+		</div>
 	  <% }) %> 
 	</div>
 <div class="container d-flex flex-column flex-md-row justify-content-center mt-5 col-md-5" id="holder">

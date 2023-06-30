@@ -17,25 +17,33 @@ a {
     background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity))!important;
     position: absolute;
 }
+.mapDiv a:hover {
+  filter: invert(20%)
+}
+
+.mapDiv a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8)
+}
+
+#ghostDiv {
+  width: 100%;
+  gap: 10px;
+}
 
 .mapDiv {
-  width: 50%;
-  color: white;
   display: flex;
+  width: 80%;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  height: 50px;
-  border: 1px solid white;
 }
 
 .mapContainer {
+  display: grid;
+  grid-template-rows: repeat(auto, 1fr);
   width: 100%;
-  display: flex;
-  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
   justify-content: center;
-  flex-direction: column;
-  gap: 3px;
-  padding-top: 30px;
 }
 
 h1 {
@@ -58,11 +66,15 @@ h1 {
 }
 
 .ghostInfo {
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 100px;
+    border: 3px solid gray;
+    width: 60vmin;
+    padding: 1vmin 2vmin;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding-bottom: 2vmin;
+    margin-bottom: 1vmin;
+    text-align: left;
+    background: grey;
 }
 
 .ghostImg {
@@ -94,13 +106,10 @@ h1 {
 }
 
 .roomName {
-  display: flex; 
-   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  text-align: left;
-  color: white
+  display: grid;
+  grid-template-columns: 75% 25%;
+  width: 95%;
+  color: rgba(255, 255, 255, 0.8)
 }
 
 ul {
@@ -108,8 +117,8 @@ ul {
 }
 
 .occurrances {
-  color: white;
-  margin: left;
+  color: rgb(202, 4, 4);
+  font-size: 20px;
 }
 
 .addButtons {
@@ -128,3 +137,31 @@ ul {
   margin: 40px, 20px, 40px, 20px,
 }
 
+.button {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: 2px solid #000;
+  border-radius: 3px;
+  color: #000;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 15px;
+  padding: 12px 20px;
+  text-align:center;
+  transition-duration: .15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  }
+  
+.button:hover {
+  background: rgb(142, 13, 26);
+}
+
+deleteButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
